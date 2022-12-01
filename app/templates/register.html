@@ -1,0 +1,12 @@
+{% extends 'auth_base.html' %}
+{% block content %}
+<form class="container" method="POST" action="{{ url_for('login') }}">
+  {{ form.csrf_token }}
+  <h1 class="h3 mb-3 font-weight-normal">Регистрация</h1>
+  {{ form.username.label(class="text-center mb-2 mt-2") }}
+  {{ form.username(class="form-control", placeholder="Login") }}
+  {{ form.password.label(class="text-center mb-2 mt-2") }}
+  {{ form.password(class="form-control", placeholder="Password") }}
+  <p class="text-center mt-5">{{ form.submit(class="btn btn-lg btn-primary btn-block") }}</p>
+</form>
+{% endblock %}
