@@ -1,4 +1,5 @@
 import wtforms as ws
+from flask import flash
 from flask_login import current_user
 from flask_wtf import FlaskForm
 
@@ -24,10 +25,11 @@ class EmployeeForm(FlaskForm):
     def validate_fullname(self, field):
         splitted_fullname = field.data.split(' ')
         if len(splitted_fullname) == 1:
-            raise ws.ValidationError('ФИО должно быть полным')
+            raise ws.ValidationError(flash('ФИО должно быть полным', 'danger'))
+
         for name in splitted_fullname:
             if not name.isalpha():
-                raise ws.ValidationError('ФИО не может содержать спец.символов и цифр')
+                raise ws.ValidationError(flash('ФИО не может содержать спец.символов и цифр', 'danger'))
 
     def validate_phone(self, field):
         if field.data[0] != '+':

@@ -6,6 +6,8 @@ from .forms import EmployeeForm, UserForm
 from .models import Employee, User
 
 
+
+
 def index():
     employees = Employee.query.all()
     return render_template('index.html', employees=employees)
